@@ -1,0 +1,32 @@
+sudo: required
+services:
+  - docker
+env:
+  global:
+    - SHA=$(git rev-parse HEAD)
+    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+before_install:
+  - openssl aes-256-cbc -K $encrypted_9f3b5599b056_key -iv $encrypted_9f3b5599b056_iv -in service-account.json.enc -out service-account.json -d
+  - curl https://sdk.cloud.google.com | bash > /dev/null;
+  - source $HOME/google-cloud-sdk/path.bash.inc
+  - gcloud components update kubectl
+  - gcloud auth activate-service-account --key-file service-account.json
+  - gcloud config set project multi-k8s-288105
+  - gcloud config set compute/zone us-central1-a
+  - gcloud container clusters get-credentials  multi-cluster
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t vladbronfman/igentify_Challenge -f ./composetest/Dockerfile.dev ./composetest
+
+before_script:
+  - docker-compose up -d --build
+
+script: #projects need to provide the script key in their .travis.yml to specify what command to run tests with.
+  #- docker-compose exec web python app.py test
+  # - docker run -e CI=true vladbronfman/igentify_Challenge python test 
+  - docker-compose exec web python app.test.py
+
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  on:
+    branch: master

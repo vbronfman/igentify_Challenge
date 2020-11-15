@@ -12,10 +12,10 @@ before_install:
   - curl https://sdk.cloud.google.com | bash > /dev/null;
   - source $HOME/google-cloud-sdk/path.bash.inc
   - gcloud components update kubectl
-  - gcloud auth activate-service-account --key-file service-account.json
-  - gcloud config set project multi-k8s-288105
+  - gcloud auth activate-service-account --key-file igentify-challenge.json
+  - gcloud config set project igentify-challenge
   - gcloud config set compute/zone us-central1-a
-  - gcloud container clusters get-credentials  multi-cluster
+  - gcloud container clusters get-credentials  igentify-cluster
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t vladbronfman/igentify_Challenge -f ./composetest/Dockerfile.dev ./composetest
 

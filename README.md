@@ -29,7 +29,7 @@ _trvais login_
 _travis encrypt-file <service account.json> -r repository/project_
 _root@44968d734b08:/# travis login --pro  --github-token xxxxxxxxx_
 _Successfully logged in as vbronfman!_
-root@44968d734b08:/# travis encrypt-file igentify-challenge.json -r vbronfman/igentify_Challenge
+_root@44968d734b08:/# travis encrypt-file igentify-challenge.json igentify-challenge.json.enc -I --pro --repo vbronfman/igentify_Challenge **--print-key**_
 encrypting igentify-challenge.json for vbronfman/igentify_Challenge
 _storing result as igentify-challenge.json.enc_
 storing secure env variables for decryption
@@ -39,9 +39,14 @@ vis.yml, for instance):
 
     openssl aes-256-cbc -K $encrypted_115895d8_key -iv $encrypted_651c115895d8_iv -in igentify-challenge.json.enc -out igentif
 
+key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+iv:  XXXXXXXXXXXXXXXXXXXXXXXX
+
 Make sure to add igentify-challenge.json.enc to the git repository.
 Make sure not to add /tmp/igentify-challenge.json to the git repository.
 _Commit all changes to your .travis.yml._
+**NOTE** 
+-print-key - prints value of encrypted_115895d8_key and $encrypted_651c115895d8_iv. In my case CLI didn't create these variables automaticaly so I've added them manually.
 
 * Create DOCKER_PASSWORD and DOCKER_USER environment variables in Travis CI
 

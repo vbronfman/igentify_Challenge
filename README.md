@@ -62,8 +62,7 @@ storing secure env variables for decryption
 Please add the following to your build script (before_install stage in your .tra
 vis.yml, for instance):
 
-<<<<<<< HEAD
-    openssl aes-256-cbc -K $encrypted_115895d8_key -iv $encrypted_651c115895d8_iv -in igentify-challenge.json.enc -out igentif
+     openssl aes-256-cbc -K $encrypted_115895d8_key -iv $encrypted_651c115895d8_iv -in igentify-challenge.json.enc -out igentif
 
 key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 iv:  XXXXXXXXXXXXXXXXXXXXXXXX

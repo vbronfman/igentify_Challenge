@@ -14,7 +14,8 @@ before_install:
   - gcloud components update kubectl
   - gcloud auth activate-service-account --key-file igentify-challenge.json
   - gcloud config set project igentify-challenge
-  - gcloud config set compute/zone us-central1
+  #- gcloud config set compute/zone us-central1
+  - gcloud config set compute/zone us-central1-c
   - gcloud container clusters get-credentials  igentify-cluster
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t vladbronfman/igentify_challenge -f ./composetest/Dockerfile.dev ./composetest

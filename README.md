@@ -6,7 +6,7 @@ Create a small project (Any language any stack) and build a CI/CD pipeline for i
 The project implies Python application: Flask with Redis back-end. Application has been grabbed here https://docs.docker.com/compose/gettingstarted/ 
 CI implies GitHub as code repository and Travis CI platform to run build and integration tests.
 Code delivery into repository triggers build in Travis CI. 
-CD stage deploys application into Google Cloud Platform upon success of the build. Deployment stage runs upon code delivery into 'master' branch.
+CD stage deploys application into Google Cloud Platform upon success of the build. Deployment stage runs upon code delivery into 'master' branch aka 'newmaster'
 
 
 ## Steps to set CI
@@ -87,3 +87,5 @@ Make sure to add igentify-challenge-15bb3352337c.json.enc to the git repository.
 Make sure not to add /tmp/igentify-challenge-15bb3352337c.json to the git reposi
 tory.
 Commit all changes to your .travis.yml.
+
+Build fired upon pull request to masternew

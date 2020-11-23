@@ -1,7 +1,7 @@
 # igentify_Challenge
 Create a small project (Any language any stack) and build a CI/CD pipeline for it.
 
-<<<<<<< HEAD
+ 
 ## Introduction
 The project implies Python application: Flask with Redis back-end. Application has been grabbed here https://docs.docker.com/compose/gettingstarted/ 
 CI implies GitHub as code repository and Travis CI platform to run build and integration tests.

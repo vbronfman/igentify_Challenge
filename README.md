@@ -88,9 +88,3 @@ Make sure to add igentify-challenge-15bb3352337c.json.enc to the git repository.
 Make sure not to add /tmp/igentify-challenge-15bb3352337c.json to the git reposi
 tory.
 Commit all changes to your .travis.yml.
->>>>>>> 9d86937... Travis CI encriptes key added
-
-
-
-
-
